@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Simple Website</title>
+  <style>
+    /* Add some styling to make the website look nicer */
+    body {
+      background-color: #F5A9A9; /* Light pink background color */
+      font-family: Arial, sans-serif; /* Use the Arial font */
+    }
+    h1 {
+      text-align: center; /* Center the text in the H1 element */
+      color: #8B0000; /* Dark red text color */
+    }
+    .button {
+      /* Style for the buttons */
+      border: none; /* Remove the border */
+      color: white; /* White text color */
+      padding: 15px 32px; /* Add some padding to the buttons */
+      text-align: center; /* Center the text */
+      text-decoration: none; /* Remove underline */
+      display: inline-block; /* Display the buttons inline */
+      font-size: 16px; /* Increase the font size */
+      margin: 4px 2px; /* Add some margin to the buttons */
+      cursor: pointer; /* Add a cursor on hover */
+    }
+    .yes {background-color: #4CAF50;} /* Green background color for the "Yes" button */
+    .no {background-color: #f44336;} /* Red background color for the "No" button */
+    img {
+      width: 200px; /* Set the width of the image */
+      height: 200px; /* Set the height of the image */
+      display: block; /* Display the image as a block element */
+      margin: 0 auto; /* Center the image */
+    }
+    img.fade-in {
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <h1>Can i go to the gym today?</h1>
+  <img id="my-image" src="pic1.jpg" alt="A small picture">
+  <div style="text-align:center">
+    <button id="yes" class="button yes">Yes</button>
+    <button id="no" class="button no">No</button>
+  </div>
+  <script>
+   // Get the "No" button
+var noButton = document.getElementById("no");
+// Keep track of whether the movement should continue
+var keepMoving = true;
+
+var minX = (window.innerWidth * 0.325);
+var maxX = (window.innerWidth * 0.675);
+var minY = (window.innerHeight * 1.325);
+var maxY = (window.innerHeight * 1.675);
+
+// Add an event listener for the mousemove event
+document.addEventListener("mousemove", function(event) {
+    if (keepMoving) {
+        // Get the x and y coordinates of the mouse cursor
+        var mouseX = event.clientX;
+        var mouseY = event.clientY;
+
+        // Get the x and y coordinates of the button
+        var buttonX = noButton.offsetLeft;
+        var buttonY = noButton.offsetTop;
+        var buttonWidth = noButton.offsetWidth;
+        var buttonHeight = noButton.offsetHeight;
+
+        // Check if the mouse cursor is near the button
+        if (mouseX > buttonX - buttonWidth && mouseX < buttonX + buttonWidth && mouseY > buttonY - buttonHeight && mouseY < buttonY + buttonHeight) {
+            // Generate a random x and y position within the square
+            var x = Math.floor(Math.random() * (maxX-minX) + minX);
+            var y = Math.floor(Math.random() * (maxY-minY) + minY);
+            // Update the position of the button
+            noButton.style.position = "absolute";
+            noButton.style.left = x + "px";
+            noButton.style.top = y + "px";
+        }
+    }
+});
+
+
+    // Get the "Yes" button
+    var yesButton = document.getElementById("yes");
+    var myImage = document.getElementById("my-image");
+    // Keep track of whether the movement should continue
+    var keepMoving = true;
+
+    var minX = (window.innerWidth * 0.325);
+    var maxX = (window.innerWidth * 0.675);
+    var minY = (window.innerHeight * 0.325);
+    var maxY = (window.innerHeight * 0.675);
+
+    // Add an event listener for the mousemove event
+    document.addEventListener("mousemove", function(event) {
+        if (keepMoving) {
+            // Get the x and y coordinates of the mouse cursor
+            var mouseX = event.clientX;
+            var mouseY = event.clientY;
+
+            // Get the x and y coordinates of the button
+            var buttonX = noButton.offset
+            Left;
+            var buttonY = noButton.offsetTop;
+            var buttonWidth = noButton.offsetWidth;
+            var buttonHeight = noButton.offsetHeight;
+            // Check if the mouse cursor is near the button
+            if (mouseX > buttonX - buttonWidth && mouseX < buttonX + buttonWidth && mouseY > buttonY - buttonHeight && mouseY < buttonY + buttonHeight) {
+                // Generate a random x and y position within the square
+                var x = Math.floor(Math.random() * (maxX-minX) + minX);
+                var y = Math.floor(Math.random() * (maxY-minY) + minY);
+                // Update the position of the button
+                noButton.style.position = "absolute";
+                noButton.style.left = x + "px";
+                noButton.style.top = y + "px";
+            }
+        }
+    });
+
+    // Add an event listener to the "No" button
+    noButton.addEventListener("click", function() {
+        keepMoving = false;
+    });
+
+    // Add an event listener to the "Yes" button
+    yesButton.addEventListener("click", function() {
+        myImage.src = "pic2.jpg";
+        myImage.classList.add("fade-in");
+        var h1 = document.createElement("h1");
+        var t = document.createTextNode("ooh you're so sweet sayang makasiiiih");
+        h1.appendChild(t);
+        h1.style.textAlign = "center";
+        document.body.appendChild(h1);
+    });
+  </script>
+</body>
+</html>
